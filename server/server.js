@@ -4,6 +4,7 @@ const admin = require('firebase-admin');
 const checkAdmin = require('./middleware/checkAdmin');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const adminRoutes = require("./routes/adminRoutes");
+const path = require('path');
 
 // Firebase Admin Initialization using environment variable
 if (!admin.apps.length) {
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve frontend files from public folder
-app.use(express.static('../public'));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Root Route (disabled because it overrides the website)
 // app.get('/', (req, res) => {
