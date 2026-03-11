@@ -25,13 +25,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve frontend files from public folder
-app.use(express.static(path.join(__dirname, '../public')));
+// TEMP: Serve React public folder since build doesn't exist
+app.use(express.static(path.join(__dirname, '../client/public')));
 
-// Root Route (disabled because it overrides the website)
-// app.get('/', (req, res) => {
-//   res.json({ message: 'API is running with Firebase...' });
-// });
+// Root route to load website
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
 
 // Public Routes
 app.post('/api/messages', async (req, res) => {
