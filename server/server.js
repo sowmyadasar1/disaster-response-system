@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve frontend files from public folder
-app.use(express.static('public'));
+app.use(express.static('../public'));
 
 // Root Route (disabled because it overrides the website)
 // app.get('/', (req, res) => {
