@@ -24,10 +24,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Root Route
-app.get('/', (req, res) => {
-  res.json({ message: 'API is running with Firebase...' });
-});
+// Serve frontend files from public folder
+app.use(express.static('public'));
+
+// Root Route (disabled because it overrides the website)
+// app.get('/', (req, res) => {
+//   res.json({ message: 'API is running with Firebase...' });
+// });
 
 // Public Routes
 app.post('/api/messages', async (req, res) => {
